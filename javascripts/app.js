@@ -57,32 +57,73 @@ function turnRight(rover){
 function moveForward(rover){
   console.log("moveForward was called");
   if (rover.direction === "N") {
-    rover.y += 1
-    console.log("The rover coordinates are: " + rover.x + "," + rover.y)
-  } else if (rover.direction === "S") {
     rover.y -= 1
-    console.log("The rover coordinates are: " + rover.x + "," + rover.y)
+    console.log("Moving to: " + rover.x + "," + rover.y)
+  } else if (rover.direction === "S") {
+    rover.y += 1
+    console.log("Moving to: " + rover.x + "," + rover.y)
   } else if (rover.direction === "W") {
     rover.x -= 1
-    console.log("The rover coordinates are: " + rover.x + "," + rover.y)
+    console.log("Moving to: " + rover.x + "," + rover.y)
   } else if (rover.direction === "E") {
     rover.x += 1
-    console.log("The rover coordinates are: " + rover.x + "," + rover.y)
+    console.log("Moving to: " + rover.x + "," + rover.y)
   } else {
     alert("Something when wrong bruh!!!")
   }; 
 }
 
+function moveBackward(rover){
+  console.log("moveBackward was called");
+  if (rover.direction === "N") {
+    rover.y += 1
+    console.log("Going back to: " + rover.x + "," + rover.y)
+  } else if (rover.direction === "S") {
+    rover.y -= 1
+    console.log("Going back to: " + rover.x + "," + rover.y)
+  } else if (rover.direction === "W") {
+    rover.x += 1
+    console.log("Going back to: " + rover.x + "," + rover.y)
+  } else if (rover.direction === "E") {
+    rover.x -= 1
+    console.log("Going back to: " + rover.x + "," + rover.y)
+  } else {
+    alert("Something when wrong bruh!!!")
+  }; 
+}
+
+function checkingBoundaries(x,y) {
+  if (x < 0 || x > 9 || y < 0 || y > 9) {
+    console.log("You almost got out the safe zone, automatic reserve in process...")
+    rover.x = rover.travelLog[rover.travelLog.length -1][0]
+    rover.y = rover.travelLog[rover.travelLog.length -1][1]
+    console.log("The rover new coordinates are: " + rover.x + "," + rover.y)
+  };
+}
+
 function commands(string) {
+  rover.travelLog.push([rover.x,rover.y])
   for (var i = 0; i < string.length; i++) {
     if (string[i] === "r") {
       turnRight(rover);
       moveForward(rover);
+      checkingBoundaries(rover.x,rover.y)
       var position = [rover.x,rover.y];
       rover.travelLog.push(position);
     } else if (string[i] === "l") {
       turnLeft(rover);
       moveForward(rover);
+      checkingBoundaries(rover.x,rover.y)
+      var position = [rover.x,rover.y];
+      rover.travelLog.push(position);
+    } else if (string[i] === "f") {
+      moveForward(rover);
+      checkingBoundaries(rover.x,rover.y)
+      var position = [rover.x,rover.y];
+      rover.travelLog.push(position);
+    } else if (string[i] === "b") {
+      moveBackward(rover);
+      checkingBoundaries(rover.x,rover.y)
       var position = [rover.x,rover.y];
       rover.travelLog.push(position);
     } else {
@@ -92,9 +133,10 @@ function commands(string) {
   console.log(rover.travelLog)
 }
 
+
 //Testing
 
-commands("rllrllrrrrllrllrlllrl")
+commands("rfffffrfffffrfffffffffff")
 
 
 /* turnRight(rover);
