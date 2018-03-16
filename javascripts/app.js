@@ -23,13 +23,28 @@ function turnLeft(rover){
     rover.direction = "N"
     console.log("The rover is now facing " + rover.direction);
   } else {
-    alert("Something when worng bruh!!!")
+    alert("Something when wrong bruh!!!")
   };
 }
 
 function turnRight(rover){
-  console.log("turnRight was called!");
-  //First turns then one step forward
+  console.log("The rover is now facing " + rover.direction);
+  console.log("turnLeft was called!");
+  if (rover.direction === "N") {
+    rover.direction = "E"
+    console.log("The rover is now facing " + rover.direction);
+  } else if (rover.direction === "E") {
+    rover.direction = "S"
+    console.log("The rover is now facing " + rover.direction); 
+  } else if (rover.direction === "S") {
+    rover.direction = "W"
+    console.log("The rover is now facing " + rover.direction);
+  } else if (rover.direction === "E") {
+    rover.direction = "N"
+    console.log("The rover is now facing " + rover.direction);
+  } else {
+    alert("Something when wrong bruh!!!")
+  };
 }
 
 function moveForward(rover){
