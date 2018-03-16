@@ -49,11 +49,6 @@ function turnRight(rover){
   };
 }
 
-//Moving forward is a function of the rover’s current direction, and the movement forward.
-//For instance, if the Rover is facing west and moves forward, we would decrease the Rover’s x by 1.
-//If the rover is facing north and moves forward, we would decrease the rover’s y by 1.
-//If the rover is facing south and moves forward, we would increase the y by 1.
-//Fill in this logic in the moveForward function. After each movement, console.log the rover’s coordinates so you can see where it is positioned.
 function moveForward(rover){
   console.log("moveForward was called");
   if (rover.direction === "N") {
@@ -98,7 +93,15 @@ function checkingBoundaries(x,y) {
     rover.x = rover.travelLog[rover.travelLog.length -1][0]
     rover.y = rover.travelLog[rover.travelLog.length -1][1]
     console.log("The rover new coordinates are: " + rover.x + "," + rover.y)
-  };
+    return true
+  } else {
+    return false
+  }
+}     
+
+function addTravelLog() {
+  var position = [rover.x,rover.y]
+  rover.travelLog.push(position)
 }
 
 function commands(string) {
@@ -107,61 +110,30 @@ function commands(string) {
     if (string[i] === "r") {
       turnRight(rover);
       moveForward(rover);
-      checkingBoundaries(rover.x,rover.y)
-      var position = [rover.x,rover.y];
-      rover.travelLog.push(position);
+      if (!checkingBoundaries(rover.x,rover.y)) {
+        addTravelLog();
+      }
     } else if (string[i] === "l") {
       turnLeft(rover);
       moveForward(rover);
-      checkingBoundaries(rover.x,rover.y)
-      var position = [rover.x,rover.y];
-      rover.travelLog.push(position);
+      if (!checkingBoundaries(rover.x,rover.y)) {
+        addTravelLog();
+      }
     } else if (string[i] === "f") {
       moveForward(rover);
-      checkingBoundaries(rover.x,rover.y)
-      var position = [rover.x,rover.y];
-      rover.travelLog.push(position);
+      if (!checkingBoundaries(rover.x,rover.y)) {
+        addTravelLog();
+      }
     } else if (string[i] === "b") {
       moveBackward(rover);
-      checkingBoundaries(rover.x,rover.y)
-      var position = [rover.x,rover.y];
-      rover.travelLog.push(position);
+      if (!checkingBoundaries(rover.x,rover.y)) {
+        addTravelLog();
+      }
     } else {
-      alert("Something when wrong bruh!!!")
     };
   }
   console.log(rover.travelLog)
 }
 
 
-//Testing
-
-commands("rfffffrfffffrfffffffffff")
-
-
-/* turnRight(rover);
-moveForward(rover);
-turnRight(rover);
-moveForward(rover);
-turnRight(rover);
-moveForward(rover);
-turnRight(rover);
-moveForward(rover);
-if (rover.x === 0 && rover.y === 0) {
-  console.log("The rover is working properly!")
-} else {
-  console.log("The rover is crazy!")
-};
-turnLeft(rover);
-moveForward(rover);
-turnLeft(rover);
-moveForward(rover);
-turnLeft(rover);
-moveForward(rover);
-turnLeft(rover);
-moveForward(rover);
-if (rover.x === 0 && rover.y === 0) {
-  console.log("The rover is working properly!")
-} else {
-  console.log("The rover is crazy!")
-}; */
+commands("frrrrrrrf");
