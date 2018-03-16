@@ -72,8 +72,34 @@ function moveForward(rover){
   }; 
 }
 
+function commands(string) {
+  for (var i = 0; i < string.length; i++) {
+    if (string[i] === "r") {
+      turnRight(rover);
+      moveForward(rover);
+    } else if (string[i] === "l") {
+      turnLeft(rover);
+      moveForward(rover);
+    } else {
+      alert("Something when wrong bruh!!!")
+    };
+  }
+}
+
 //Testing
-turnRight(rover);
+
+commands("llll");
+console.log(" ")
+console.log(" ")
+console.log(" ")
+commands("rrrr");
+console.log(" ")
+console.log(" ")
+console.log(" ")
+commands("rlrlrlrl")
+
+
+/* turnRight(rover);
 moveForward(rover);
 turnRight(rover);
 moveForward(rover);
@@ -98,4 +124,4 @@ if (rover.x === 0 && rover.y === 0) {
   console.log("The rover is working properly!")
 } else {
   console.log("The rover is crazy!")
-};
+}; */
