@@ -1,13 +1,9 @@
-// Rover Object Goes Here
-// ======================
-
 var rover = {
   direction: "N",
   x: 0,
   y: 0,
   travelLog: []
 }
-
 
 var grid = [ 
   ['','','','','','','','',''],
@@ -21,7 +17,6 @@ var grid = [
   ['','','','','','','','',''],
 ];
 
-// ======================
 function turnLeft(rover){
   console.log("The rover is now facing " + rover.direction);
   console.log("turnLeft was called!");
