@@ -4,7 +4,8 @@
 var rover = {
   direction: "N",
   x: 0,
-  y: 0
+  y: 0,
+  travelLog: []
 }
 
 // ======================
@@ -77,26 +78,23 @@ function commands(string) {
     if (string[i] === "r") {
       turnRight(rover);
       moveForward(rover);
+      var position = [rover.x,rover.y];
+      rover.travelLog.push(position);
     } else if (string[i] === "l") {
       turnLeft(rover);
       moveForward(rover);
+      var position = [rover.x,rover.y];
+      rover.travelLog.push(position);
     } else {
       alert("Something when wrong bruh!!!")
     };
   }
+  console.log(rover.travelLog)
 }
 
 //Testing
 
-commands("llll");
-console.log(" ")
-console.log(" ")
-console.log(" ")
-commands("rrrr");
-console.log(" ")
-console.log(" ")
-console.log(" ")
-commands("rlrlrlrl")
+commands("rllrllrrrrllrllrlllrl")
 
 
 /* turnRight(rover);
