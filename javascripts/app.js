@@ -2,9 +2,8 @@
 // ======================
 
 var rover = {
-  direction: "W",
+  direction: "N",
 }
-
 
 // ======================
 function turnLeft(rover){
@@ -29,7 +28,7 @@ function turnLeft(rover){
 
 function turnRight(rover){
   console.log("The rover is now facing " + rover.direction);
-  console.log("turnLeft was called!");
+  console.log("turnRight was called!");
   if (rover.direction === "N") {
     rover.direction = "E"
     console.log("The rover is now facing " + rover.direction);
@@ -39,7 +38,7 @@ function turnRight(rover){
   } else if (rover.direction === "S") {
     rover.direction = "W"
     console.log("The rover is now facing " + rover.direction);
-  } else if (rover.direction === "E") {
+  } else if (rover.direction === "W") {
     rover.direction = "N"
     console.log("The rover is now facing " + rover.direction);
   } else {
@@ -52,4 +51,12 @@ function moveForward(rover){
   //First turns then one step forward
 }
 
+//Testing
+turnRight(rover);
+turnRight(rover);
+turnRight(rover);
+turnRight(rover);
+turnLeft(rover);
+turnLeft(rover);
+turnLeft(rover);
 turnLeft(rover);
