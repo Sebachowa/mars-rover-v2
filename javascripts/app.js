@@ -3,6 +3,8 @@
 
 var rover = {
   direction: "N",
+  x: 0,
+  y: 0
 }
 
 // ======================
@@ -46,17 +48,54 @@ function turnRight(rover){
   };
 }
 
+//Moving forward is a function of the rover’s current direction, and the movement forward.
+//For instance, if the Rover is facing west and moves forward, we would decrease the Rover’s x by 1.
+//If the rover is facing north and moves forward, we would decrease the rover’s y by 1.
+//If the rover is facing south and moves forward, we would increase the y by 1.
+//Fill in this logic in the moveForward function. After each movement, console.log the rover’s coordinates so you can see where it is positioned.
 function moveForward(rover){
   console.log("moveForward was called");
-  //First turns then one step forward
+  if (rover.direction === "N") {
+    rover.y += 1
+    console.log("The rover coordinates are: " + rover.x + "," + rover.y)
+  } else if (rover.direction === "S") {
+    rover.y -= 1
+    console.log("The rover coordinates are: " + rover.x + "," + rover.y)
+  } else if (rover.direction === "W") {
+    rover.x -= 1
+    console.log("The rover coordinates are: " + rover.x + "," + rover.y)
+  } else if (rover.direction === "E") {
+    rover.x += 1
+    console.log("The rover coordinates are: " + rover.x + "," + rover.y)
+  } else {
+    alert("Something when wrong bruh!!!")
+  }; 
 }
 
 //Testing
 turnRight(rover);
+moveForward(rover);
 turnRight(rover);
+moveForward(rover);
 turnRight(rover);
+moveForward(rover);
 turnRight(rover);
+moveForward(rover);
+if (rover.x === 0 && rover.y === 0) {
+  console.log("The rover is working properly!")
+} else {
+  console.log("The rover is crazy!")
+};
 turnLeft(rover);
+moveForward(rover);
 turnLeft(rover);
+moveForward(rover);
 turnLeft(rover);
+moveForward(rover);
 turnLeft(rover);
+moveForward(rover);
+if (rover.x === 0 && rover.y === 0) {
+  console.log("The rover is working properly!")
+} else {
+  console.log("The rover is crazy!")
+};
